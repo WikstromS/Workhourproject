@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:WorkHourProject"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Color x:Key="Background">#FF111A72</Color>
+
     </Application.Resources>
 </Application>

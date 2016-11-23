@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WorkHourProject;
 
 namespace WorkHourProject
 {
@@ -35,9 +36,16 @@ namespace WorkHourProject
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            if(UsernameTextbox.Text == "admin" && PasswordTextBox.Text == "admin")
+            {
+                AdminWin win1 = new AdminWin();
+                win1.Show();
+                this.Close();
+            }
+
             if(UsernameTextbox.Text == "vieras" && PasswordTextBox.Text == "vieras")
             {
-                Window win2 = new Window();
+                UserWin win2 = new UserWin();
                 win2.Show();
                 this.Close();
             }
