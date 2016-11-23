@@ -42,16 +42,19 @@ namespace WorkHourProject
                 win1.Show();
                 this.Close();
             }
+           
 
-            if(UsernameTextbox.Text == "vieras" && PasswordTextBox.Text == "vieras")
+            if (UsernameTextbox.Text == "vieras" && PasswordTextBox.Text == "vieras")
             {
                 UserWin win2 = new UserWin();
                 win2.Show();
                 this.Close();
             }
-            else
+
+
+            if (UsernameTextbox.Text != "vieras" && PasswordTextBox.Text != "vieras" && UsernameTextbox.Text != "admin" && PasswordTextBox.Text != "admin")
             {
-                MessageBox.Show("Invalid Username or Password");
+                MessageBox.Show("Invalid Username and Password");
             }
         }
 
