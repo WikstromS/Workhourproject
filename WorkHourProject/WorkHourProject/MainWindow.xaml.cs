@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WorkHourProject;
+using System.Data;
+using System.Data.SQLite;
+using System.Data.Common;
 
 namespace WorkHourProject
 {
@@ -24,6 +27,7 @@ namespace WorkHourProject
         public MainWindow()
         {
             InitializeComponent();
+          
         }
 
         private void UsernameTextBox_TextInput(object sender, TextCompositionEventArgs e)
@@ -36,25 +40,54 @@ namespace WorkHourProject
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if(UsernameTextbox.Text == "admin" && PasswordTextBox.Text == "admin")
-            {
-                AdminWin win1 = new AdminWin();
-                win1.Show();
-                this.Close();
-            }
-           
+            string userName = UsernameTextbox.Text;
+            string password = PasswordTextBox.Text;
 
-            if (UsernameTextbox.Text == "vieras" && PasswordTextBox.Text == "vieras")
+            SQLiteConnection db = new SQLiteConnection("Data Source =|DataDirectory|testi.db;FailifMissing=True");
+            db.Open();
+
+            using (SQLiteCommand com = db.CreateCommand())
             {
-                UserWin win2 = new UserWin();
-                win2.Show();
-                this.Close();
-            }
+
+                com.CommandText = "select * from USER where USERNAME = '" + userName + "'and PASSWORD='" + password + "'";
+                using (IDataReader dr = com.ExecuteReader())
+                {
+                    bool verification = dr.Read();
+                    if(verification)
+                    {
+                        AdminWin win1 = new AdminWin();
+                        win1.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        PasswordTextBox.Clear();
+                        UsernameTextbox.Clear();
+                        MessageBox.Show("Invalid username or password");
+                    }
+                }
+                /*
+                    if (UsernameTextbox.Text == "admin" && PasswordTextBox.Text == "admin")
+                    {
+                        AdminWin win1 = new AdminWin();
+                        win1.Show();
+                        this.Close();
+                    }
 
 
-            if (UsernameTextbox.Text != "vieras" && PasswordTextBox.Text != "vieras" && UsernameTextbox.Text != "admin" && PasswordTextBox.Text != "admin")
-            {
-                MessageBox.Show("Invalid Username and Password");
+                if (UsernameTextbox.Text == "vieras" && PasswordTextBox.Text == "vieras")
+                {
+                    UserWin win2 = new UserWin();
+                    win2.Show();
+                    this.Close();
+                }
+
+
+                if (UsernameTextbox.Text != "vieras" && PasswordTextBox.Text != "vieras" && UsernameTextbox.Text != "admin" && PasswordTextBox.Text != "admin")
+                {
+                    MessageBox.Show("Invalid Username and Password");
+                } */
+                db.Close();
             }
         }
 
