@@ -41,7 +41,7 @@ namespace WorkHourProject
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string userName = UsernameTextbox.Text;
-            string password = PasswordTextBox.Text;
+            string password = PasswordTextBox.Password;
 
             SQLiteConnection db = new SQLiteConnection("Data Source =|DataDirectory|testi.db;FailifMissing=True");
             db.Open();
