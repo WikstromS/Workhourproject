@@ -32,7 +32,7 @@ namespace WorkHourProject
 
         private void UsernameTextBox_TextInput(object sender, TextCompositionEventArgs e)
         {
-
+            
         }
         private void PasswordTextBox_TextInput(object sender, TextCompositionEventArgs e)
         {
@@ -55,9 +55,18 @@ namespace WorkHourProject
                     bool verification = dr.Read();
                     if(verification)
                     {
-                        AdminWin win1 = new AdminWin();
-                        win1.Show();
-                        this.Close();
+                        if (userName == "admin" && password == "admin")
+                        {
+                            AdminWin win1 = new AdminWin();
+                            win1.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            UserWin win2 = new UserWin();
+                            win2.Show();
+                            this.Close();
+                        }
                     }
                     else
                     {
@@ -65,28 +74,9 @@ namespace WorkHourProject
                         UsernameTextbox.Clear();
                         MessageBox.Show("Invalid username or password");
                     }
+                    dr.Close();
                 }
-                /*
-                    if (UsernameTextbox.Text == "admin" && PasswordTextBox.Text == "admin")
-                    {
-                        AdminWin win1 = new AdminWin();
-                        win1.Show();
-                        this.Close();
-                    }
-
-
-                if (UsernameTextbox.Text == "vieras" && PasswordTextBox.Text == "vieras")
-                {
-                    UserWin win2 = new UserWin();
-                    win2.Show();
-                    this.Close();
-                }
-
-
-                if (UsernameTextbox.Text != "vieras" && PasswordTextBox.Text != "vieras" && UsernameTextbox.Text != "admin" && PasswordTextBox.Text != "admin")
-                {
-                    MessageBox.Show("Invalid Username and Password");
-                } */
+                
                 db.Close();
             }
         }

@@ -19,7 +19,7 @@
         <Label x:Name="label_Copy" Content="Username" HorizontalAlignment="Left" Margin="196,95,0,0" VerticalAlignment="Top" Height="26" Width="80" Background="#00000000" Foreground="#FFEEE6E6"/>
         <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="23" Margin="196,204,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextInput="PasswordTextBox_TextInput" />
         <Label x:Name="label_Copy1" Content="Password" HorizontalAlignment="Left" Margin="196,173,0,0" VerticalAlignment="Top" Height="26" Width="80" Background="#00000000" Foreground="#FFEEE6E6"/>
-        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="196,257,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click"/>
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="196,257,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click" IsDefault="True"/>
 
     </Grid>
 </Window>
