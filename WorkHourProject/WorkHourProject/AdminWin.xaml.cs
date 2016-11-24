@@ -23,5 +23,10 @@ namespace WorkHourProject
         {
             InitializeComponent();
         }
+
+        private void AddUserButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

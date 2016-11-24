@@ -53,7 +53,7 @@ namespace WorkHourProject
                 using (IDataReader dr = com.ExecuteReader())
                 {
                     bool verification = dr.Read();
-                    if(verification)
+                    if (verification)
                     {
                         if (userName == "admin" && password == "admin")
                         {
@@ -76,11 +76,31 @@ namespace WorkHourProject
                     }
                     dr.Close();
                 }
-                
-                db.Close();
             }
+        }
+                
+                
+
+                public static bool AddUser(string username, string password)
+        {
+            SQLiteConnection con = new SQLiteConnection("Data Source =|DataDirectory|testi.db;FailifMissing=True");
+            using (SQLiteCommand com = new SQLiteCommand("INSERT INTO USER VALUES (@username, @password)", con))
+            {
+                //Add the input as parameters to avoid sql-injections
+                com.Parameters.AddWithValue("@username", username);
+                com.Parameters.AddWithValue("@password", password);
+
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+            return true;
+        }
+                
+            }
+
         }
 
         
-    }
-}
+    
+

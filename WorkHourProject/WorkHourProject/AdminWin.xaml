@@ -13,6 +13,7 @@
                 <GradientStop Color="{DynamicResource Background}" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <Button x:Name="AddUserButton" Content="Add user to dabatase" HorizontalAlignment="Left" Margin="67,94,0,0" VerticalAlignment="Top" Width="127" Click="AddUserButton_Click"/>
 
     </Grid>
 </Window>
